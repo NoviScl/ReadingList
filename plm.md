@@ -1,4 +1,4 @@
-1. **BERT Loses Patience: Fast and Robust Inference with Early Exit**. arXiv 2020. [[pdf](https://arxiv.org/abs/2006.04152)]
+1. **BERT Loses Patience: Fast and Robust Inference with Early Exit**. NeurIPS 2020. [[pdf](https://arxiv.org/abs/2006.04152)]
 
 During inference, instead of setting a threshold for early exit, the models exits when the predictions of each layer's classifier remain the same for a certain number of layers. Apart from inference speedup, it also achieves better robustness with ensemble effects (as it uses multiple layers' classifiers).
 
