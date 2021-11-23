@@ -8,3 +8,47 @@ Proposed an effective method: Temperature Scaling: divide logits by a temperatur
 2. **Posterior calibration and exploratory analysis for natural language
 processing models**. EMNLP 2015. [[pdf](https://arxiv.org/pdf/1508.05154.pdf)]
 
+To empiricically measure calibration error, they use: 1) Adaptive binning procedure: instead of dividing the interval `[0,1]` into fixed-width bins, they define the bins such that there are an equal number of points in each. 2) Confidence Interval Estimation: construct a binomial normal approximation for the label frequency estimate in each bin and simulate from it. every simulation across all bins is used to construct a calibration error, all these simulated errors are collected to construct a normal approximation for the calibration error estimate. They report calibration errors along with 95% confidence intervals.
+
+
+3. **Calibration of Pre-trained Transformers**. EMNLP 2020. [[pdf](https://arxiv.org/pdf/2003.07892.pdf)]
+
+Empirically evaluated multiple models on multiple datasets. Main takeaways: 1) Pretrained models are more accurate and calibrated, RoBERTa has better in-domain calibration than BERT. 2) MLE models with Temperature Scaling achieve low in-domain calibration error. 3) When OOD, label smoothing (during training, allocate a small fraction of gold prob to other classes and compute KL) is more effective. 4) Optimal TS factors are bounded within a small interval (search method: linear search with a granularity of 0.01).
+
+
+4. **How Can We Know When Language Models Know? On the Calibration of Language Models for Question Answering**. TACL 2021. 
+
+They focus on the calibration of generative models for QA tasks (e.g., UnifiedQA). They use the product of prob of each generated token as the prob of each answer. They then normalize the prob over all candidates (for extractive QA datasets, the candidates are top-k spans). 
+They tried two types of calibration: 1) Finetuning the whole model to maximize likelihood of the correct option among all candidates; 2) Post-hoc calibration: either temperature scaling or feature-based decision trees (features: entropy over candidate set as the model uncertainty, perplexity of LM on input as input uncertainty, length of input), regressor trained on dev set to minimize NLL.
+They also added LM specific methods: 1) Candidate output paraphrasing, paraphrase each candidate and take normlized score. 2) Retrieve and append paragraph to the model.
+Generally all proposed methods are useful to some extent.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
