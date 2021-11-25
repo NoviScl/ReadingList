@@ -37,8 +37,8 @@ Takeaway: Adding QA embedding as additional features is always helpful.
 
 6. **Selective Question Answering under Domain Shift**. ACL 2020. [[pdf](https://aclanthology.org/2020.acl-main.503.pdf)]
 
-
-
+Setting: Train on p_source, evaluate on (p_source + p_ood). They also tried a setting where there is access to a small known OOD set. See the above for their list of features. They train the calibrator on a small number of held-out p_source train examples and known p_ood data. 
+Takeaways: 1) Training the calibrator on some known OOD data is helpful. 2) Test-time dropout improves results but is expensive. 
 
 
 
