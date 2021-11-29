@@ -41,7 +41,9 @@ Setting: Train on p_source, evaluate on (p_source + p_ood). They also tried a se
 Takeaways: 1) Training the calibrator on some known OOD data is helpful. 2) Test-time dropout improves results but is expensive. 
 
 
+7. **Can Explanations Be Useful for Calibrating Black Box Models?**. arXiv 2021. [[pdf](https://arxiv.org/pdf/2110.07586.pdf)]
 
+Similar approach of feeding a set of features to a binary calibrator (random forst classifier). They generated explanations using LIME and SHAP (basically identifying the most important input tokens). They also include heuristic features like POS tags. The calibrator classifier is trained on a small set of target domain data. Same metric: calibrator accuracy and F1-coverage curve (rank examples by calibrator score, compute accuracy at different coverage fractions). Explanations are generally helpful features including on OOD settings.
 
 
 
